@@ -17,6 +17,9 @@ parsed_response = json.loads(response.text)
 
 last_refreshed = parsed_response["Meta Data"]["3. Last Refreshed"]
 
+import datetime
+now = datetime.datetime.now()
+
 # breakpoint()
 
 #
@@ -27,7 +30,7 @@ print("-------------------------")
 print("SELECTED SYMBOL: XYZ")
 print("-------------------------")
 print("REQUESTING STOCK MARKET DATA...")
-print("REQUEST AT: 2018-02-20 02:00pm")
+print("REQUEST AT: " + now.strftime('%Y-%m-%d %I:%M %p'))
 print("-------------------------")
 print(f"LATEST DAY: {last_refreshed}")
 print("LATEST CLOSE: $100,000.00")
