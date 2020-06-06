@@ -82,7 +82,7 @@ with open(csv_file_path, "w") as csv_file: # "w" means "open the file for writin
          })
    
 print("-------------------------")
-print("SELECTED SYMBOL: XYZ")
+print("SELECTED SYMBOL: " + symbol)
 print("-------------------------")
 print("REQUESTING STOCK MARKET DATA...")
 print("REQUEST AT: " + now.strftime('%Y-%m-%d %I:%M %p'))
