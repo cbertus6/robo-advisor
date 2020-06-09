@@ -80,6 +80,20 @@ with open(csv_file_path, "w") as csv_file: # "w" means "open the file for writin
             "close": daily_prices["4. close"],
             "volume": daily_prices["5. volume"]
          })
+
+# Recommendation Logic
+if float(latest_close) < ((float(recent_high) + float(recent_low))/float(2)):
+    recommendation = "BUY!"
+else:
+    recommendation = "SELL!"
+
+# Recommendation Explanation
+if recommendation == "BUY!":
+    rec_reason = "THE CURRENT PRICE IS ON THE LOW SIDE OF THE RECENT HIGHS AND LOWS, SUGGESTING IT COULD MOVE UP TOWARDS THE MEAN."
+elif recommendation == "SELL!":
+    rec_reason = "THE CURRENT PRICE IS ON THE HIGH SIDE OF THE RECENT HIGHS AND LOWS, SUGGESTING IT COULD REGRESS TOWARDS THE MEAN."
+else:
+    rec_reason = "GOOD LUCK GUESSING"
    
 print("-------------------------")
 print("SELECTED SYMBOL: " + symbol)
@@ -92,8 +106,8 @@ print(f"LATEST CLOSE: {to_usd(float(latest_close))}")
 print(f"RECENT HIGH: {to_usd(float(recent_high))}")
 print(f"RECENT LOW: {to_usd(float(recent_low))}")
 print("-------------------------")
-print("RECOMMENDATION: BUY!")
-print("RECOMMENDATION REASON: TODO")
+print(f"RECOMMENDATION: {recommendation}")
+print(f"RECOMMENDATION REASON: {rec_reason}")
 print("-------------------------")
 print(f"WRITING DATA TO CSV: {csv_file_path}...")
 print("-------------------------")
