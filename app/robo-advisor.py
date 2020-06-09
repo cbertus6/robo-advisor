@@ -82,22 +82,6 @@ with open(csv_file_path, "w") as csv_file: # "w" means "open the file for writin
             "volume": daily_prices["5. volume"]
          })
 
-# Recommendation Logic
-if float(latest_close) > ((float(recent_high) * float(0.8)):
-    recommendation = "SELL NOW!"
-elif float(latest_close) < (float(recent_low) * float(1.1))
-    recommendation = "BUY NOW!"
-else:
-    recommendation = "HOLD STEADY, DON'T MAKE A DECISION YET"
-
-# Recommendation Explanation
-if recommendation == "BUY NOW!":
-    rec_reason = "THE CURRENT PRICE IS ON THE LOW SIDE OF THE RECENT HIGHS AND LOWS, SUGGESTING IT HAS ROOM TO MOVE UP TOWARDS THE MEAN."
-elif recommendation == "SELL NOW!":
-    rec_reason = "THE CURRENT PRICE IS ON THE HIGH SIDE OF THE RECENT HIGHS AND LOWS, SUGGESTING IT COULD POSSIBLY REGRESS TOWARDS THE MEAN."
-else:
-    rec_reason = "THE STOCK HASN'T VEERED ENOUGH FROM IT'S TYPICAL MEAN TO MAKE A CONCLUSIVE DECISON."
-   
 print("-------------------------")
 print("SELECTED SYMBOL: " + symbol)
 print("-------------------------")
@@ -109,13 +93,16 @@ print(f"LATEST CLOSE: {to_usd(float(latest_close))}")
 print(f"RECENT HIGH: {to_usd(float(recent_high))}")
 print(f"RECENT LOW: {to_usd(float(recent_low))}")
 print("-------------------------")
-print(f"RECOMMENDATION: {recommendation}")
-print(f"RECOMMENDATION REASON: {rec_reason}")
+if float(latest_close) > (float(recent_high) * 0.9):
+   print("RECOMMENDATION: SELL NOW! THE CURRENT PRICE IS TOO HIGH!")
+elif float(latest_close) < (float(recent_low) * 1.1):
+    print("BUY NOW! THE CURRENT PRICE IS TOO LOW")
+else:
+    print("HOLD STEADY, DON'T MAKE A DECISION YET")
 print("-------------------------")
 print(f"WRITING DATA TO CSV: {csv_file_path}...")
 print("-------------------------")
-print("HAPPY INVESTING!")
+print("BUY LOW, SELL HIGH!")
 print("-------------------------")
 
 # csv_file_path = "data/prices.csv" # a relative filepath
-
