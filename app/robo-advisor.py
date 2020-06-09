@@ -27,6 +27,10 @@ response = requests.get(request_url)
 # print(response.status_code)
 # print(response.text)
 
+if 'Error' in response.text:
+    print("Please make sure the stock symbol inputted is valid.")
+    exit()
+
 parsed_response = json.loads(response.text)
 
 last_refreshed = parsed_response["Meta Data"]["3. Last Refreshed"]
