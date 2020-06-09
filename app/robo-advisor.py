@@ -19,7 +19,7 @@ api_key = os.environ.get("ALPHAVANTAGE_API_KEY")
 
 symbol = input("Please enter the stock symbol of the company you would like to lookup: ")
 
-request_url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey={api_key}"
+request_url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + str(symbol) + "&apikey=" + str(api_key)
 
 response = requests.get(request_url)
 # print(type(response))
