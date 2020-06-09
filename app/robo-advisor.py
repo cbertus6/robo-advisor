@@ -4,6 +4,7 @@ import json
 import os
 
 from dotenv import load_dotenv
+
 import requests
 
 load_dotenv()
@@ -42,7 +43,7 @@ latest_day = dates[0]
 
 latest_close = tsd[latest_day]["4. close"]
 
-# finding maximum of all the high prices
+# finding maximum of all the high prices and minimum of all the low prices
 high_prices = []
 low_prices = []
 
@@ -82,18 +83,20 @@ with open(csv_file_path, "w") as csv_file: # "w" means "open the file for writin
          })
 
 # Recommendation Logic
-if float(latest_close) < ((float(recent_high) + float(recent_low))/float(2)):
-    recommendation = "BUY!"
+if float(latest_close) > ((float(recent_high) * float(0.8)):
+    recommendation = "SELL NOW!"
+elif float(latest_close) < (float(recent_low) * float(1.1))
+    recommendation = "BUY NOW!"
 else:
-    recommendation = "SELL!"
+    recommendation = "HOLD STEADY, DON'T MAKE A DECISION YET"
 
 # Recommendation Explanation
-if recommendation == "BUY!":
-    rec_reason = "THE CURRENT PRICE IS ON THE LOW SIDE OF THE RECENT HIGHS AND LOWS, SUGGESTING IT COULD MOVE UP TOWARDS THE MEAN."
-elif recommendation == "SELL!":
-    rec_reason = "THE CURRENT PRICE IS ON THE HIGH SIDE OF THE RECENT HIGHS AND LOWS, SUGGESTING IT COULD REGRESS TOWARDS THE MEAN."
+if recommendation == "BUY NOW!":
+    rec_reason = "THE CURRENT PRICE IS ON THE LOW SIDE OF THE RECENT HIGHS AND LOWS, SUGGESTING IT HAS ROOM TO MOVE UP TOWARDS THE MEAN."
+elif recommendation == "SELL NOW!":
+    rec_reason = "THE CURRENT PRICE IS ON THE HIGH SIDE OF THE RECENT HIGHS AND LOWS, SUGGESTING IT COULD POSSIBLY REGRESS TOWARDS THE MEAN."
 else:
-    rec_reason = "GOOD LUCK GUESSING"
+    rec_reason = "THE STOCK HASN'T VEERED ENOUGH FROM IT'S TYPICAL MEAN TO MAKE A CONCLUSIVE DECISON."
    
 print("-------------------------")
 print("SELECTED SYMBOL: " + symbol)
