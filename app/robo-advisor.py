@@ -2,10 +2,9 @@
 import csv
 import json
 import os
+import requests
 
 from dotenv import load_dotenv
-
-import requests
 
 load_dotenv()
 
@@ -100,9 +99,9 @@ print("-------------------------")
 if float(latest_close) > (float(recent_high) * 0.9):
    print("RECOMMENDATION: SELL NOW! THE CURRENT PRICE IS TOO HIGH!")
 elif float(latest_close) < (float(recent_low) * 1.1):
-    print("BUY NOW! THE CURRENT PRICE IS TOO LOW")
+    print("RECOMMENDATION: BUY NOW! THE CURRENT PRICE IS TOO LOW")
 else:
-    print("HOLD STEADY, DON'T MAKE A DECISION YET")
+    print("RECOMMENDATION: HOLD STEADY, DON'T MAKE A DECISION YET")
 print("-------------------------")
 print(f"WRITING DATA TO CSV: {csv_file_path}...")
 print("-------------------------")
