@@ -71,7 +71,7 @@ csv_file_path = os.path.join(os.path.dirname(__file__), "..", "data", "prices.cs
 
 csv_headers = ["timestamp", "open", "high", "low", "close", "volume"]
 
-with open(csv_file_path, "w") as csv_file: # "w" means "open the file for writing"
+with open(csv_file_path, "w", newline="") as csv_file: # "w" means "open the file for writing"
     writer = csv.DictWriter(csv_file, fieldnames=csv_headers)
     writer.writeheader() # uses fieldnames set above
     for date in dates:
