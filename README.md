@@ -1,14 +1,12 @@
-# robo-advisor
+# Robo Advisor Project
 
-## Robo Advisor Project
-
-# Navigation to Project
+## Navigation to Project
 
 + Access the file through GitHub.com/cbertus
 + Fork the repository titled robo-advisor over to your control
 + Once you've forked the repository, clone it to your desktop
 
-# Virtual Environment Creation
+## Virtual Environment Creation
 
 + Once you've accessed the repository through your desktop, create a virtual environment (named something like stocks-env)
 + After creation, activate the virtual environment and make sure it has python 3.7 as its version
@@ -16,7 +14,7 @@
     - pip install requests
     - pip install -r requirements.txt
 
-# Searching For Stock Prices
+## Searching For Stock Prices
 
 + To begin the search towards the stock price, run the script by typing python app/robo-advisor.py into your terminal
 + Once the script has been run, you will be prompted to enter in a stock ticker
