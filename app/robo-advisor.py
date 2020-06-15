@@ -109,3 +109,27 @@ print("BUY LOW, SELL HIGH!")
 print("-------------------------")
 
 # csv_file_path = "data/prices.csv" # a relative filepath
+
+import matplotlib.pyplot as plt
+
+#X = []
+#Y = []
+
+closing_prices = []
+
+for date in dates:
+    closing_price = tsd[date]["4. close"]
+    closing_prices.append(float(closing_price))
+   
+plt.plot(dates, closing_prices)
+
+# Labeling the X-axis 
+plt.xlabel('Dates') 
+
+# Labeling the Y-axis 
+plt.ylabel('Prices') 
+
+# Give a title to the graph
+plt.title(symbol + ' Price Data') 
+
+plt.show()
